@@ -1,0 +1,14 @@
+{
+  "name": "goavrgui",
+  "version": "1.0.0",
+  "description": "GUI for goAVR",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "varun mohan",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^6.0.11"
+  }
+}
