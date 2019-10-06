@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -31,6 +31,33 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+   
+  var menu = Menu.buildFromTemplate([
+    {
+      label: 'File',
+      submenu: [
+          {
+            label:'Exit',
+            click() { 
+              app.quit() 
+            }
+          }
+        ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
+          {
+            label:'Devices',
+            click() { 
+              editDevices() 
+            }
+          }
+        ]
+    }
+  ])
+  Menu.setApplicationMenu(menu); 
+
 }
 
 // This method will be called when Electron has finished
@@ -53,3 +80,10 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+function editDevices()
+{
+  let win = new BrowserWindow({parent: mainWindow, modal: true, frame: false, width: 500, height: 500 })
+  win.on('close', function () { win = null })
+  win.loadFile("html/devices.html")
+  win.webContents.openDevTools()
+}
