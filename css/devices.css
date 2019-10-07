@@ -1,0 +1,78 @@
+.editdevices {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+}
+
+.heading {
+    grid-column-start: 2;
+    grid-column-end: 10;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    text-align: center;
+    border-bottom: 2px solid black;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+.devices {
+    grid-column-start: 2;
+    grid-column-end: 10;
+    grid-row-start: 3;
+    grid-row-end: 9;
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 30px);
+}
+.devices .row {
+    grid-column-start: 1;
+    grid-column-end: 11;
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    height: 30px;
+    border-bottom: 2px solid black;
+}
+
+.devices .row .devname{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 30px;
+    justify-content: left;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.devices .row .ip{
+    grid-column-start: 3;
+    grid-column-end: 6;
+    height: 30px;
+    justify-content: left;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.devices .row .port{
+    grid-column-start: 6;
+    grid-column-end: 7;
+    height: 30px;
+    justify-content: left;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.devices .row .edit{
+    grid-column-start: 7;
+    grid-column-end: 9;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.devices .row .delete{
+    grid-column-start: 9;
+    grid-column-end: 11;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}

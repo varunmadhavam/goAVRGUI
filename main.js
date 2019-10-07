@@ -82,7 +82,7 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 function editDevices()
 {
-  let win = new BrowserWindow({parent: mainWindow, modal: true,resizable: false,width: 500, height: 500 })
+  let win = new BrowserWindow({parent: mainWindow, modal: true,resizable: false,width: 500, height: 530 })
   win.on('close', function () { win = null })
   win.setMenu(null)
   win.loadFile("html/devices.html")
