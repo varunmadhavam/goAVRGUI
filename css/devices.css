@@ -78,6 +78,14 @@
     height: 30px;
 }
 
+.devices .row .empty{
+    grid-column-start: 1;
+    grid-column-end: 11;
+    vertical-align: middle;
+    line-height: 30px;
+    text-align: center;
+}
+
 .devices .row .devname{
     grid-column-start: 1;
     grid-column-end: 3;

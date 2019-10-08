@@ -11,14 +11,11 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 660,
-    resizable: false,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
+    resizable: false
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('connect.html')
   mainWindow.webContents.openDevTools()
 
   // Open the DevTools.
@@ -82,7 +79,14 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 function editDevices()
 {
-  let win = new BrowserWindow({parent: mainWindow, modal: true,resizable: false,width: 500, height: 530 })
+  let win = new BrowserWindow({
+    webPreferences: {preload: path.join(app.getAppPath(), 'js/device_pre.js')},
+    parent: mainWindow, 
+    modal: true,
+    resizable: false,
+    width: 500, 
+    height: 530 
+  })
   win.on('close', function () { win = null })
   win.setMenu(null)
   win.loadFile("html/devices.html")
