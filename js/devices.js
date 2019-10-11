@@ -65,7 +65,7 @@ function addDevice()
     <input class="newdevip" type="text" name="devip" placeholder="IP">\
     <input class="newdevport" type="text" name="port" placeholder="Port">\
     <div class="newdevdiscard"><i onclick="discardnewDevice()" aria-hidden="true" class="fas fa-trash" title="Discard"></i></div>\
-    <div class="newdevwrite"><i onclick="writeDevice()" aria-hidden="true" class="fas fa-plus" title="Add"></i></div>\
+    <div class="newdevwrite"><i onclick="writeDevice()" aria-hidden="true" class="fas fa-plus-circle" title="Add"></i></div>\
     </dev>'
     devicesbuttonHTML.innerHTML=html;
 }
