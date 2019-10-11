@@ -135,3 +135,15 @@
 .odd{
     background-color: #F8F8F8;
 }
+
+.addnewdev {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: 30px;
+    height: 30px;
+}
+
+
+
