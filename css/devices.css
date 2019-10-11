@@ -143,7 +143,49 @@
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: 30px;
     height: 30px;
+    background-color: #F8F8F8;
 }
 
+.addnewdev .newdevname{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding-left: 3px;
+    background-color: #F8F8F8;
+}
+
+.addnewdev .newdevip{
+    grid-column-start: 3;
+    grid-column-end: 7;
+    padding-left: 3px;
+    border-left: 3px solid white;
+    background-color: #F8F8F8;
+}
+
+.addnewdev .newdevport{
+    grid-column-start: 7;
+    grid-column-end: 9;
+    padding-left: 2px;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    background-color: #F8F8F8;
+}
+
+.addnewdev .newdevdiscard{
+    grid-column-start: 9;
+    grid-column-end: 10;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    text-align: center;
+}
+
+.addnewdev .newdevwrite{
+    grid-column-start: 10;
+    grid-column-end: 11;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    text-align: center;
+}
 
 

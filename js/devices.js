@@ -60,11 +60,19 @@ function addDevice()
 {
     var html=""
     var devicesbuttonHTML=document.getElementById("adddevice")
-    html='<div class="addnewdev"><div class="newdevname"><input type="text" name="devname"></div>\
-    <div class="newdevip"><input type="text" name="devip"></div>\
-    <div class="newdevport"><input type="text" name="port"></div>\
-    <div class="newdevdiscard"><i onclick="discardnewDevice()" aria-hidden="true" class="fa fa-bars" title="Discard"></i></div>\
-    <div class="newdevwrite"><i onclick="writeDevice()" aria-hidden="true" class="fas fa-trash" title="Add"></i></div>\
+    html='<div class="addnewdev">\
+    <input class="newdevname" type="text" name="devname" placeholder="Name">\
+    <input class="newdevip" type="text" name="devip" placeholder="IP">\
+    <input class="newdevport" type="text" name="port" placeholder="Port">\
+    <div class="newdevdiscard"><i onclick="discardnewDevice()" aria-hidden="true" class="fas fa-trash" title="Discard"></i></div>\
+    <div class="newdevwrite"><i onclick="writeDevice()" aria-hidden="true" class="fas fa-plus" title="Add"></i></div>\
     </dev>'
+    devicesbuttonHTML.innerHTML=html;
+}
 
+function discardnewDevice()
+{
+    html='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>'
+    var devicesbuttonHTML=document.getElementById("adddevice")
+    devicesbuttonHTML.innerHTML=html;
 }
