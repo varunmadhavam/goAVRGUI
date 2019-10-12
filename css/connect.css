@@ -71,16 +71,16 @@ body {
     grid-column-end: 10;
     grid-row-start: 8;
     grid-row-end: 10;
-    background-color: #333;
-    color: white;
+    background-color:  aliceblue;
+    font-weight: bold;
     text-align: center;
     vertical-align: middle;
     line-height: 35px;
     border-radius: 5px;
-    font-style: bold;
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 .connect a{
     text-decoration: none;
-    color: white;
+    color: black;
+    font-style: bold;
 }
