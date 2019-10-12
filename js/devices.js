@@ -48,7 +48,10 @@ function removeDevice(no)
 {
     obj.data.devices.splice(no,1)
     pupulateHTML(obj)
-    console.log(writedevice(JSON.stringify(obj.data)))
+    if(!writedevice(JSON.stringify(obj.data)))
+    {
+        console.log("failed to write")
+    }
 }
 
 function editDevice(no)
@@ -61,9 +64,9 @@ function addDevice()
     var html=""
     var devicesbuttonHTML=document.getElementById("adddevice")
     html='<div class="addnewdev">\
-    <input class="newdevname" type="text" name="devname" placeholder="Name">\
-    <input class="newdevip" type="text" name="devip" placeholder="IP">\
-    <input class="newdevport" type="text" name="port" placeholder="Port">\
+    <input class="newdevname" type="text" id="newdevname" name="newdevname" placeholder="Name">\
+    <input class="newdevip" type="text" id="newdevip" name="newdevip" placeholder="IP">\
+    <input class="newdevport" type="text" id="newdevport" name="newdevport" placeholder="Port">\
     <div class="newdevdiscard"><i onclick="discardnewDevice()" aria-hidden="true" class="fas fa-trash" title="Discard"></i></div>\
     <div class="newdevwrite"><i onclick="writeDevice()" aria-hidden="true" class="fas fa-plus-circle" title="Add"></i></div>\
     </dev>'
@@ -75,4 +78,44 @@ function discardnewDevice()
     html='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>'
     var devicesbuttonHTML=document.getElementById("adddevice")
     devicesbuttonHTML.innerHTML=html;
+}
+
+function displaynewdevButton()
+{
+    html='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>'
+    var devicesbuttonHTML=document.getElementById("adddevice")
+    devicesbuttonHTML.innerHTML=html;
+}
+
+function writeDevice()
+{
+    var devname=document.getElementById("newdevname").value;
+    var devip=document.getElementById("newdevip").value;
+    var devport=document.getElementById("newdevport").value;
+    if(!inputValidate("devname",devname))
+    {
+        console.log("invalid name")
+    }
+    else if(!inputValidate("devip",devip))
+    {
+        console.log("invalid ip")
+    }
+    else if(!inputValidate("devport",devport))
+    {
+        console.log("invalid port")
+    }
+    else
+    {
+        var newdev='{"name":"'+devname+'","ip":"'+devip+'","port":"'+devport+'"}';
+        newdev=JSON.parse(newdev)
+        obj.data.devices.push(newdev)
+        displaynewdevButton()
+        pupulateHTML(obj)
+        console.log()
+        if(!writedevice(JSON.stringify(obj.data)))
+        {
+            console.log("write failed")
+        }
+    }
+   
 }
