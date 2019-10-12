@@ -46,6 +46,7 @@ function oddoreven(i)
 
 function removeDevice(no)
 {
+    hideError()
     obj.data.devices.splice(no,1)
     pupulateHTML(obj)
     if(!writedevice(JSON.stringify(obj.data)))
@@ -61,12 +62,13 @@ function editDevice(no)
 
 function addDevice()
 {
+    hideError()
     var html=""
     var devicesbuttonHTML=document.getElementById("adddevice")
     html='<div class="addnewdev">\
-    <input class="newdevname" type="text" id="newdevname" name="newdevname" placeholder="Name">\
-    <input class="newdevip" type="text" id="newdevip" name="newdevip" placeholder="IP">\
-    <input class="newdevport" type="text" id="newdevport" name="newdevport" placeholder="Port">\
+    <input onclick="hideError()" class="newdevname" type="text" id="newdevname" name="newdevname" placeholder="Name">\
+    <input onclick="hideError()" class="newdevip" type="text" id="newdevip" name="newdevip" placeholder="IP">\
+    <input onclick="hideError()" class="newdevport" type="text" id="newdevport" name="newdevport" placeholder="Port">\
     <div class="newdevdiscard"><i onclick="discardnewDevice()" aria-hidden="true" class="fas fa-trash" title="Discard"></i></div>\
     <div class="newdevwrite"><i onclick="writeDevice()" aria-hidden="true" class="fas fa-plus-circle" title="Add"></i></div>\
     </dev>'
@@ -75,6 +77,7 @@ function addDevice()
 
 function discardnewDevice()
 {
+    hideError()
     html='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>'
     var devicesbuttonHTML=document.getElementById("adddevice")
     devicesbuttonHTML.innerHTML=html;
@@ -82,6 +85,7 @@ function discardnewDevice()
 
 function displaynewdevButton()
 {
+    hideError()
     html='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>'
     var devicesbuttonHTML=document.getElementById("adddevice")
     devicesbuttonHTML.innerHTML=html;
@@ -94,15 +98,15 @@ function writeDevice()
     var devport=document.getElementById("newdevport").value;
     if(!inputValidate("devname",devname))
     {
-        console.log("invalid name")
+        displayError("Invalid device name. Should be Alphanumeric.")
     }
     else if(!inputValidate("devip",devip))
     {
-        console.log("invalid ip")
+        displayError("Value entered is not a valid IP.")
     }
     else if(!inputValidate("devport",devport))
     {
-        console.log("invalid port")
+        displayError("Value entered is not a valid port.")
     }
     else
     {
@@ -114,8 +118,21 @@ function writeDevice()
         console.log()
         if(!writedevice(JSON.stringify(obj.data)))
         {
-            console.log("write failed")
+            displayError("Write to File failed. Check Logs.")
         }
     }
    
+}
+
+function displayError(message)
+{
+    var errorDIV=document.getElementById("message")
+    errorDIV.innerHTML=message;
+    errorDIV.style.display="block"
+}
+
+function hideError()
+{
+    var errorDIV=document.getElementById("message")
+    errorDIV.style.display="none"
 }
