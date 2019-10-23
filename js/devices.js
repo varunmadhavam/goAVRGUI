@@ -1,6 +1,10 @@
-var filecont = readdevices()
-var obj = JSON.parse(filecont)
+var obj = readDevices()
 pupulateHTML(obj)
+
+function readDevices()
+{
+    return JSON.parse(readdevices())
+}
 
 function pupulateHTML(obj)
 {
@@ -25,7 +29,7 @@ function pupulateHTML(obj)
                 <div class="devname">'+device.name+'</div>\
                 <div class="ip">'+device.ip+'</div>\
                 <div class="port">'+device.port+'</div>\
-                <div class="edit"><i onclick="editDevice('+i+')" aria-hidden="true" class="fa fa-bars" title="Edit"></i></div>\
+                <div class="edit"><i onclick="setDefault('+i+')" aria-hidden="true" class="'+isDefault(device.default)+'" title="Set Default"></i></div>\
                 <div class="delete"><i onclick="removeDevice('+i+')" aria-hidden="true" class="fas fa-trash" title="Delete"></i></div>\
                 </div>'
                 i++
@@ -44,6 +48,14 @@ function oddoreven(i)
         return "odd"
 }
 
+function isDefault(no)
+{
+    if(no==1)
+        return "fas fa-check-circle"
+    else
+        return "far fa-circle"
+}
+
 function removeDevice(no)
 {
     hideError()
@@ -55,16 +67,28 @@ function removeDevice(no)
     }
 }
 
-function editDevice(no)
+function setDefault(no)
 {
-
+   var i=0
+   obj.data.devices.forEach(device => {
+       if(i==no)
+            device.default=1
+       else
+            device.default=0
+      i++;
+   });
+   
+   if(!writedevice(JSON.stringify(obj.data)))
+        {
+            displayError("Write to File failed. Check Logs.")
+            obj=readDevices()
+        }
+    pupulateHTML(obj)
 }
 
 function addDevice()
 {
     hideError()
-    var html=""
-    var devicesbuttonHTML=document.getElementById("adddevice")
     html='<div class="addnewdev">\
     <input onclick="hideError()" class="newdevname" type="text" id="newdevname" name="newdevname" placeholder="Name">\
     <input onclick="hideError()" class="newdevip" type="text" id="newdevip" name="newdevip" placeholder="IP">\
@@ -72,23 +96,19 @@ function addDevice()
     <div class="newdevdiscard"><i onclick="discardnewDevice()" aria-hidden="true" class="fas fa-trash" title="Discard"></i></div>\
     <div class="newdevwrite"><i onclick="writeDevice()" aria-hidden="true" class="fas fa-plus-circle" title="Add"></i></div>\
     </dev>'
-    devicesbuttonHTML.innerHTML=html;
+    document.getElementById("adddevice").innerHTML=html;
 }
 
 function discardnewDevice()
 {
     hideError()
-    html='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>'
-    var devicesbuttonHTML=document.getElementById("adddevice")
-    devicesbuttonHTML.innerHTML=html;
+    document.getElementById("adddevice").innerHTML='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>';
 }
 
 function displaynewdevButton()
 {
     hideError()
-    html='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>'
-    var devicesbuttonHTML=document.getElementById("adddevice")
-    devicesbuttonHTML.innerHTML=html;
+    document.getElementById("adddevice").innerHTML='<a href="#" class="adddevicebutton" onclick="addDevice()">Add New Device</a>';
 }
 
 function writeDevice()
@@ -110,16 +130,16 @@ function writeDevice()
     }
     else
     {
-        var newdev='{"name":"'+devname+'","ip":"'+devip+'","port":"'+devport+'"}';
+        var newdev='{"name":"'+devname+'","ip":"'+devip+'","port":"'+devport+'","default":0}';
         newdev=JSON.parse(newdev)
         obj.data.devices.push(newdev)
         displaynewdevButton()
-        pupulateHTML(obj)
-        console.log()
         if(!writedevice(JSON.stringify(obj.data)))
         {
             displayError("Write to File failed. Check Logs.")
+            obj=readDevices()
         }
+        pupulateHTML(obj)
     }
    
 }

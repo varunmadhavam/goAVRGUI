@@ -4,12 +4,44 @@
   "description": "GUI for goAVR",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "install-app-deps",
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "goAVRgui",
+    "category": "your.app.category.type",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
   },
   "author": "varun mohan",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^6.0.11"
+    "electron": "^6.0.11",
+    "electron-builder": "^21.2.0"
   },
   "dependencies": {
     "validator": "^11.1.0"
