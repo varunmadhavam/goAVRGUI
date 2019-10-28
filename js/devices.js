@@ -69,6 +69,7 @@ function removeDevice(no)
 
 function setDefault(no)
 {
+   hideError()
    var i=0
    obj.data.devices.forEach(device => {
        if(i==no)
@@ -77,7 +78,7 @@ function setDefault(no)
             device.default=0
       i++;
    });
-   
+
    if(!writedevice(JSON.stringify(obj.data)))
         {
             displayError("Write to File failed. Check Logs.")

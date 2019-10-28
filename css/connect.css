@@ -50,24 +50,8 @@ body {
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 
-.default {
-    grid-column-start: 2;
-    grid-column-end: 7;
-    grid-row-start: 8;
-    grid-row-end: 10;
-    vertical-align: middle;
-    line-height: 40px;
-    font-size: 15px;
-    font-style: bold;
-    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
-
-}
-.default label {
-    margin-left: 5px;
-}
-
 .connect {
-    grid-column-start: 7;
+    grid-column-start: 2;
     grid-column-end: 10;
     grid-row-start: 8;
     grid-row-end: 10;
@@ -75,7 +59,7 @@ body {
     font-weight: bold;
     text-align: center;
     vertical-align: middle;
-    line-height: 35px;
+    line-height: 40px;
     border-radius: 5px;
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
@@ -83,4 +67,20 @@ body {
     text-decoration: none;
     color: black;
     font-style: bold;
+}
+
+
+.errormessage {
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 5;
+    height: 45px;
+    background-color:#FFCCCC;
+    vertical-align: middle;
+    line-height: 45px;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    color: #DC143C;
+    display: none;
 }

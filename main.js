@@ -9,6 +9,7 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    webPreferences: {preload: path.join(app.getAppPath(), 'js/connect_pre.js')},
     width: 800,
     height: 660,
     resizable: false

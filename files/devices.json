@@ -1,1 +1,1 @@
-{"devices":[{"name":"arduino","ip":"10.72.16.1","port":"3344","default":1},{"name":"rpi","ip":"1.2.3.4","port":"4433","default":0}]}
+{"devices":[{"name":"rpi","ip":"1.2.3.4","port":"4433","default":1},{"name":"remo","ip":"3.55.22.33","port":"1131","default":0},{"name":"arduino","ip":"3.2.4.1","port":"2424","default":0}]}

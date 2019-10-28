@@ -15,15 +15,13 @@
         <div class="heading">
           <h3>Connect to goAVR</h3>
         </div>
-        <select name="devices" class="devices">
-            <option value="arduino">Arduino</option>
-            <option value="rpi">rPI</option>
-            <option value="esp8266">ESP8266</option>
-            <option value="adddevice">Add New Device</option>
+        <select name="devices" class="devices" id="selecteddevice">
+     
         </select>
-        <div class="default"><input type="checkbox" name="default" value="default"><label>Set As Default</label></div>
-        <div class="connect"><a href="#">Connect</a></div>
+        <div class="connect"><a href="#" onclick="connect()">Connect</a></div>
+
      </div>
+     <div class="errormessage" id="message">An error occured.</div>
     <script src="./js/connect.js"></script>
   </body>
 </html>
