@@ -88,7 +88,10 @@ function editDevices()
     width: 500, 
     height: 530 
   })
-  win.on('close', function () { win = null })
+  win.on('close', function () 
+  { win = null 
+    mainWindow.reload()
+  })
   win.setMenu(null)
   win.loadFile("html/devices.html")
   win.webContents.openDevTools()

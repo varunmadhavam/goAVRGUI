@@ -1,4 +1,6 @@
-listdevices(readDevices())
+var obj=readDevices()
+listdevices(obj)
+
 
 function listdevices(obj)
 {
@@ -19,7 +21,8 @@ function listdevices(obj)
             else
             {
                 obj.data.devices.forEach(device => {
-                    html+='<option value="'+i+'">'+device.name+'</option>'
+                    html+='<option value="'+i+'" '+isDefault(i)+'>'+device.name+'</option>'
+                    i++
                     });
             }
     }
@@ -42,4 +45,17 @@ function hideError()
 {
     var errorDIV=document.getElementById("message")
     errorDIV.style.display="none"
+}
+
+function connect()
+{
+
+}
+
+function isDefault(i)
+{
+    if(obj.data.devices[i].default==1)
+        return "selected"
+    else
+        return ""
 }
