@@ -1,1 +1,1 @@
-{"devices":[{"name":"rpi","ip":"192.168.0.233","port":"8765","default":0},{"name":"avr","ip":"2.3.4.5","port":"3343","default":1}]}
+{"devices":[{"name":"rpi","ip":"192.168.0.233","port":"8765","default":1},{"name":"11","ip":"1.2.3.4","port":"1111","default":0}]}

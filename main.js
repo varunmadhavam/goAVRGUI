@@ -9,14 +9,14 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    webPreferences: {preload: path.join(app.getAppPath(), 'js/connect_pre.js')},
+    webPreferences: {preload: path.join(app.getAppPath(), 'js/app_pre.js')},
     width: 800,
     height: 660,
     resizable: false
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('connect.html')
+  mainWindow.loadFile('app.html')
   mainWindow.webContents.openDevTools()
 
   // Open the DevTools.
@@ -49,6 +49,17 @@ function createWindow () {
             label:'Devices',
             click() { 
               editDevices() 
+            }
+          }
+        ]
+    },
+    {
+      label: 'Debug',
+      submenu: [
+          {
+            label:'Toggle Dev Tools',
+            click() { 
+              toggledevtools() 
             }
           }
         ]
@@ -95,4 +106,8 @@ function editDevices()
   win.setMenu(null)
   win.loadFile("html/devices.html")
   win.webContents.openDevTools()
+}
+
+function toggledevtools() {
+  mainWindow.toggleDevTools();
 }

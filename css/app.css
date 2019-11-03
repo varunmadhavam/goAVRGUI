@@ -63,11 +63,7 @@ body {
     border-radius: 5px;
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
-.connect a{
-    text-decoration: none;
-    color: black;
-    font-style: bold;
-}
+
 
 
 .errormessage {

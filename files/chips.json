@@ -1,0 +1,5 @@
+{
+    "chips":[
+        {"signature":"1e9307","name":"atmega8","pagesize_flash":32,"pagesize_eeprom":4,"flash_size":8192,"eeprom_size":512,"twd_fuse":5,"twd_flash":5,"twd_eeprom":10,"twd_erase":10}
+    ]
+}
