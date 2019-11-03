@@ -110,7 +110,7 @@ function setdevice()
                         var respObj=JSON.parse(http.responseText)
                         if (respObj.return==0)
                         {
-                            console.log("success")
+                            loadAapp()
                         }
                         else
                         {
@@ -128,6 +128,16 @@ function setdevice()
             }
         }
  });
+}
+
+async function fetchHtmlAsText(url) {
+    return await (await fetch(url)).text();
+}
+
+async function loadAapp()
+{
+    const contentDiv = document.getElementById("container");
+    contentDiv.innerHTML = await fetchHtmlAsText("html/home.html");
 }
 
 function isDefault(i)
