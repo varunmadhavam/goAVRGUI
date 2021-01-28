@@ -40,7 +40,7 @@
   "author": "varun mohan",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^6.0.11",
+    "electron": "^9.4.0",
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
